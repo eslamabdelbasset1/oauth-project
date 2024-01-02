@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProviderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::get('auth/{provider}/redirect',  [ProviderController::class, 'redirectToProvider']);
+Route::get('auth/{provider}/callback', [ProviderController::class, 'handleProviderCallback']);
